@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "GPT Designer",
-  "version": "0.1.31",
-  "version_name": "0.1.31 - Last updated 2026-06-10",
+  "version": "0.1.32",
+  "version_name": "0.1.32 - Last updated 2026-06-10",
   "description": "Automates Drive-backed prompt batches in ChatGPT and saves generated images back to Drive.",
   "icons": {
     "16": "icons/icon-16.png",

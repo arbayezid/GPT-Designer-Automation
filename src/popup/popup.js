@@ -78,6 +78,7 @@ const logList = getElement('logList');
 const clearLog = getElement('clearLog');
 const oauthStatus = getElement('oauthStatus');
 const themeToggle = getElement('themeToggle');
+const extensionVersion = getElement('extensionVersion');
 
 let latestSettings = createEmptySettings();
 let latestStatus = null;
@@ -198,6 +199,10 @@ clearLog.addEventListener('click', () => {
 void initialize();
 
 async function initialize() {
+  if (extensionVersion) {
+    extensionVersion.textContent = `v${chrome.runtime.getManifest().version}`;
+  }
+
   const stored = await chrome.storage.local.get(['theme', LOCAL_PERMISSION_CACHE_KEY]);
   localPermissionCache = normalizeLocalPermissionCache(stored[LOCAL_PERMISSION_CACHE_KEY]);
   if (stored.theme === 'light' || stored.theme === 'dark') {
