@@ -108,11 +108,13 @@ thinkingEffortSelect.addEventListener('change', () => {
 inputFolderId.addEventListener('input', () => {
   driveFieldsDirty = true;
   updateActionButtons();
+  resetSaveSettingsButton();
 });
 
 outputFolderId.addEventListener('input', () => {
   driveFieldsDirty = true;
   updateActionButtons();
+  resetSaveSettingsButton();
 });
 
 pasteInputFolder.addEventListener('click', () => {
@@ -131,9 +133,16 @@ chooseOutputFolder.addEventListener('click', () => {
   void chooseLocalDirectory('output');
 });
 
+function resetSaveSettingsButton() {
+  saveSettings.innerHTML = '<svg class="icon" viewBox="0 0 24 24"><path d="M5 3h12l2 2v16H5Z"/><path d="M8 3v6h8V3"/><path d="M8 21v-7h8v7"/></svg> Save';
+  saveSettings.classList.remove('btn-saved');
+}
+
 saveSettings.addEventListener('click', () => {
   void runAction(async () => {
     await saveCurrentSettings();
+    saveSettings.innerHTML = '<svg class="icon" viewBox="0 0 24 24"><path d="M5 3h12l2 2v16H5Z"/><path d="M8 3v6h8V3"/><path d="M8 21v-7h8v7"/></svg> Saved';
+    saveSettings.classList.add('btn-saved');
   }, saveSettings);
 });
 
@@ -143,6 +152,7 @@ listSets.addEventListener('click', () => {
     const response = await sendRuntimeMessage({ type: 'LIST_SETS' });
     if (!response.ok) throw new Error(response.error);
     await refreshStatus();
+    listSets.classList.add('btn-active');
   }, listSets);
 });
 
@@ -598,6 +608,15 @@ function setLocalDirectoryName(kind, name) {
   const element = kind === 'input' ? localInputFolderName : localOutputFolderName;
   element.dataset.directoryName = name;
   element.textContent = name || NO_LOCAL_FOLDER_LABEL;
+
+  const btn = kind === 'input' ? chooseInputFolder : chooseOutputFolder;
+  if (name && name !== NO_LOCAL_FOLDER_LABEL) {
+    btn.textContent = 'Selected';
+    btn.classList.add('selected');
+  } else {
+    btn.textContent = 'Select';
+    btn.classList.remove('selected');
+  }
 }
 
 async function hydrateLocalDisplayNamesFromHandles() {

@@ -4,362 +4,171 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GPT Designer</title>
+    <link rel="stylesheet" href="./popup.css" />
     <script type="module" src="./popup.js"></script>
   </head>
   <body>
     <main class="shell">
-      <header class="header">
+      <!-- Card 1: Header -->
+      <header class="panel header-panel">
         <div class="brand">
           <div class="brand-mark" aria-hidden="true">
-            <img src="icons/icon-48.png" alt="" />
-          </div>
-          <div>
-            <h1>GPT Designer</h1>
-            <p class="muted">Filesystem mode</p>
-          </div>
-        </div>
-        <div class="header-end">
-          <button
-            id="themeToggle"
-            type="button"
-            class="theme-toggle"
-            aria-label="Switch to day theme"
-            title="Switch to day theme"
-          >
-            <svg class="icon theme-icon theme-icon-day" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="4" />
-              <path d="M12 2v2" />
-              <path d="M12 20v2" />
-              <path d="m4.93 4.93 1.41 1.41" />
-              <path d="m17.66 17.66 1.41 1.41" />
-              <path d="M2 12h2" />
-              <path d="M20 12h2" />
-              <path d="m6.34 17.66-1.41 1.41" />
-              <path d="m19.07 4.93-1.41 1.41" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 12 12 17 22 12"></polyline>
+              <polyline points="2 17 12 22 22 17"></polyline>
             </svg>
-            <svg class="icon theme-icon theme-icon-night" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z" />
-            </svg>
-          </button>
-          <span id="phaseBadge" class="badge" data-mode="drive" data-phase="idle">
-          <svg class="icon badge-drive-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M17.5 19H9a6 6 0 1 1 5.7-7.85A4.5 4.5 0 1 1 17.5 19Z" />
-            <path d="m10 15 2-4 2 4" />
-            <path d="M11 13h2" />
-          </svg>
-          <svg class="icon badge-local-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="5" width="16" height="11" rx="1.5" />
-            <path d="M9 20h6" />
-            <path d="M12 16v4" />
-          </svg>
-          <span id="phaseBadgeText">Drive Idle</span>
-          <span class="status-dot" aria-hidden="true"></span>
-          </span>
+          </div>
+          <h1>GPT Designer</h1>
+          <span id="phaseBadge" style="display:none;"><span id="phaseBadgeText"></span></span>
         </div>
+        <button id="themeToggle" type="button" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon theme-icon theme-icon-day" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="icon theme-icon theme-icon-night" viewBox="0 0 24 24"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z"/></svg>
+        </button>
       </header>
 
-      <fieldset id="storageModeField" class="mode-switch" aria-label="Storage mode">
-        <legend>Storage Mode</legend>
-        <div class="mode-options">
-          <input id="modeDrive" type="radio" name="storageMode" value="drive" checked />
-          <label for="modeDrive">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M17.5 19H9a6 6 0 1 1 5.7-7.85A4.5 4.5 0 1 1 17.5 19Z" />
-              <path d="m10 15 2-4 2 4" />
-              <path d="M11 13h2" />
-            </svg>
-            <span>Drive</span>
-          </label>
-          <input id="modeLocal" type="radio" name="storageMode" value="local" />
-          <label for="modeLocal">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="5" width="16" height="11" rx="1.5" />
-              <path d="M9 20h6" />
-              <path d="M12 16v4" />
-            </svg>
-            <span>Local</span>
-          </label>
-        </div>
-      </fieldset>
-
-      <section id="chatGptSettings" class="panel chatgpt-settings" aria-labelledby="chatGptSettingsTitle">
-        <div class="section-heading compact-heading">
-          <h2 id="chatGptSettingsTitle">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3v3" />
-              <path d="M12 18v3" />
-              <path d="M3 12h3" />
-              <path d="M18 12h3" />
-              <path d="m5.6 5.6 2.1 2.1" />
-              <path d="m16.3 16.3 2.1 2.1" />
-              <path d="m18.4 5.6-2.1 2.1" />
-              <path d="m7.7 16.3-2.1 2.1" />
-            </svg>
-            <span>ChatGPT</span>
-          </h2>
-          <p id="chatGptModeStatus" class="pill-status" data-status="neutral">
-            Thinking • Extended
-          </p>
+      <!-- Card 2: CONFIGURATION -->
+      <section id="chatGptSettings" class="panel config-panel">
+        <div class="section-heading">
+          <h2>CONFIGURATION</h2>
+          <p id="chatGptModeStatus" style="display:none;"></p>
         </div>
 
-        <fieldset id="chatGptModeField" class="mode-switch compact-mode-switch" aria-label="ChatGPT mode">
-          <legend>Mode</legend>
-          <div class="mode-options chatgpt-mode-options">
-            <input id="chatGptModeInstant" type="radio" name="chatGptMode" value="instant" />
-            <label for="chatGptModeInstant">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M13 2 5 14h6l-1 8 8-12h-6Z" />
-              </svg>
-              <span>Instant</span>
+        <fieldset id="storageModeField" class="mode-switch">
+          <div class="mode-options">
+            <input id="modeDrive" type="radio" name="storageMode" value="drive" checked />
+            <label for="modeDrive">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M17.5 19H9a6 6 0 1 1 5.7-7.85A4.5 4.5 0 1 1 17.5 19Z"/><path d="m10 15 2-4 2 4"/><path d="M11 13h2"/></svg>
+              <span>Drive</span>
             </label>
-            <input
-              id="chatGptModeThinking"
-              type="radio"
-              name="chatGptMode"
-              value="thinking"
-              checked
-            />
-            <label for="chatGptModeThinking">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M9 18h6" />
-                <path d="M10 22h4" />
-                <path d="M8 14a6 6 0 1 1 8 0c-.9.8-1 1.5-1 2H9c0-.5-.1-1.2-1-2Z" />
-              </svg>
-              <span>Thinking</span>
+            <input id="modeLocal" type="radio" name="storageMode" value="local" />
+            <label for="modeLocal">
+              <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5" /><path d="M9 20h6" /><path d="M12 16v4" /></svg>
+              <span>Local</span>
             </label>
           </div>
         </fieldset>
 
-        <label id="thinkingEffortField" class="field compact-field" for="thinkingEffortSelect">
-          <span>Thinking Level</span>
-          <span class="select-shell plain-select-shell">
-            <select id="thinkingEffortSelect">
-              <option value="light">Light</option>
-              <option value="standard">Standard</option>
-              <option value="extended" selected>Extended</option>
-              <option value="heavy">Heavy</option>
-            </select>
-          </span>
+        <fieldset id="chatGptModeField" class="mode-switch">
+          <div class="mode-options">
+            <input id="chatGptModeInstant" type="radio" name="chatGptMode" value="instant" />
+            <label for="chatGptModeInstant">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M13 2 5 14h6l-1 8 8-12h-6Z" /></svg>
+              <span>Instant</span>
+            </label>
+            <input id="chatGptModeThinking" type="radio" name="chatGptMode" value="thinking" checked />
+            <label for="chatGptModeThinking">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6" /><path d="M10 22h4" /><path d="M8 14a6 6 0 1 1 8 0c-.9.8-1 1.5-1 2H9c0-.5-.1-1.2-1-2Z" /></svg>
+              <span>Thinking</span>
+            </label>
+          </div>
+        </fieldset>
+        
+        <label id="thinkingEffortField" class="field" for="thinkingEffortSelect" style="display:none;">
+          <select id="thinkingEffortSelect">
+             <option value="light">Light</option>
+             <option value="standard">Standard</option>
+             <option value="extended" selected>Extended</option>
+             <option value="heavy">Heavy</option>
+          </select>
         </label>
       </section>
 
-      <div class="mode-panels">
-        <section
-          id="driveModePanel"
-          class="panel mode-panel mode-panel-drive"
-          aria-labelledby="driveModeTitle"
-        >
-          <div class="section-heading">
-            <h2 id="driveModeTitle">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M17.5 19H9a6 6 0 1 1 5.7-7.85A4.5 4.5 0 1 1 17.5 19Z" />
-                <path d="m10 15 2-4 2 4" />
-                <path d="M11 13h2" />
-              </svg>
-              <span>Drive</span>
-            </h2>
-            <p id="oauthStatus" class="pill-status" data-status="neutral">
-              Checking service account
-            </p>
-          </div>
+      <!-- Card 3: FILESYSTEM -->
+      <section class="panel filesystem-panel mode-panels">
+        <div class="section-heading">
+          <h2>FILESYSTEM</h2>
+          <p id="localPermissionStatus" class="pill-badge" data-status="success">GRANTED</p>
+          <p id="oauthStatus" class="pill-badge" style="display:none;"></p>
+        </div>
+
+        <div id="driveModePanel" class="mode-panel-drive">
           <label class="field" for="inputFolderId">
-            <span>Input Folder ID</span>
             <span class="input-shell">
-              <input
-                id="inputFolderId"
-                type="text"
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="Enter Drive folder ID"
-              />
-              <button
-                id="pasteInputFolder"
-                type="button"
-                class="field-icon-button"
-                aria-label="Paste input folder ID"
-                title="Paste input folder ID"
-              >
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="8" y="5" width="8" height="4" rx="1" />
-                  <path
-                    d="M8 7H6.5A1.5 1.5 0 0 0 5 8.5v10A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 17.5 7H16"
-                  />
-                </svg>
-              </button>
+              <input id="inputFolderId" type="text" placeholder="Enter Drive input folder ID" />
+              <button id="pasteInputFolder" type="button" class="field-icon-button"><svg class="icon" viewBox="0 0 24 24"><rect x="8" y="5" width="8" height="4" rx="1"/><path d="M8 7H6.5A1.5 1.5 0 0 0 5 8.5v10A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 17.5 7H16"/></svg></button>
             </span>
           </label>
           <label class="field" for="outputFolderId">
-            <span>Output Folder ID</span>
             <span class="input-shell">
-              <input
-                id="outputFolderId"
-                type="text"
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="Enter Drive folder ID"
-              />
-              <button
-                id="pasteOutputFolder"
-                type="button"
-                class="field-icon-button"
-                aria-label="Paste output folder ID"
-                title="Paste output folder ID"
-              >
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="8" y="5" width="8" height="4" rx="1" />
-                  <path
-                    d="M8 7H6.5A1.5 1.5 0 0 0 5 8.5v10A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 17.5 7H16"
-                  />
-                </svg>
-              </button>
+              <input id="outputFolderId" type="text" placeholder="Enter Drive output folder ID" />
+              <button id="pasteOutputFolder" type="button" class="field-icon-button"><svg class="icon" viewBox="0 0 24 24"><rect x="8" y="5" width="8" height="4" rx="1"/><path d="M8 7H6.5A1.5 1.5 0 0 0 5 8.5v10A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 17.5 7H16"/></svg></button>
             </span>
           </label>
-        </section>
-
-        <section
-          id="localModePanel"
-          class="panel mode-panel mode-panel-local"
-          aria-labelledby="localModeTitle"
-        >
-          <div class="section-heading">
-            <h2 id="localModeTitle">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M3 7.5A1.5 1.5 0 0 1 4.5 6H9l2 2h8.5A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"
-                />
-              </svg>
-              <span>Local</span>
-            </h2>
-            <p id="localPermissionStatus" class="pill-status" data-status="neutral">
-              Folders required
-            </p>
-          </div>
-          <div class="local-folders">
-            <div class="folder-row">
-              <button id="chooseInputFolder" type="button" class="folder-button">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M3 7.5A1.5 1.5 0 0 1 4.5 6H9l2 2h8.5A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"
-                  />
-                </svg>
-                <span>
-                  <strong>Choose Input Folder</strong>
-                  <small>Select a folder</small>
-                </span>
-              </button>
-              <div class="folder-meta" aria-live="polite">
-                <span class="folder-kind">Input</span>
-                <span id="localInputFolderName" class="folder-name">No folder selected</span>
-                <span id="localInputPermissionStatus" class="permission-status">
-                  Permission not granted
-                </span>
-              </div>
-            </div>
-            <div class="folder-row">
-              <button id="chooseOutputFolder" type="button" class="folder-button">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M3 7.5A1.5 1.5 0 0 1 4.5 6H9l2 2h8.5A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"
-                  />
-                </svg>
-                <span>
-                  <strong>Choose Output Folder</strong>
-                  <small>Select a folder</small>
-                </span>
-              </button>
-              <div class="folder-meta" aria-live="polite">
-                <span class="folder-kind">Output</span>
-                <span id="localOutputFolderName" class="folder-name">No folder selected</span>
-                <span id="localOutputPermissionStatus" class="permission-status">
-                  Permission not granted
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <div class="row bare-row">
-        <button id="saveSettings" type="button" class="action-button">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5 3h12l2 2v16H5Z" />
-            <path d="M8 3v6h8V3" />
-            <path d="M8 21v-7h8v7" />
-          </svg>
-          <span>Save</span>
-        </button>
-        <button id="listSets" type="button" class="action-button">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8 6h13" />
-            <path d="M8 12h13" />
-            <path d="M8 18h13" />
-            <path d="M3 6h.01" />
-            <path d="M3 12h.01" />
-            <path d="M3 18h.01" />
-          </svg>
-          <span>List Sets</span>
-        </button>
-      </div>
-
-      <section class="panel">
-        <label class="field" for="setSelect">
-          <span>Set</span>
-          <span class="select-shell">
-            <svg class="icon select-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m12 3 8 4-8 4-8-4Z" />
-              <path d="m4 12 8 4 8-4" />
-              <path d="m4 17 8 4 8-4" />
-            </svg>
-            <select id="setSelect">
-              <option value="">No sets loaded</option>
-            </select>
-          </span>
-        </label>
-        <div class="row">
-          <button id="startJob" type="button" class="primary">
-            <svg class="icon fill-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 5v14l11-7Z" />
-            </svg>
-            <span>Start</span>
-          </button>
-          <button id="stopJob" type="button" class="danger">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="7" y="7" width="10" height="10" rx="1" />
-            </svg>
-            <span>Stop</span>
-          </button>
         </div>
-        <p id="currentStep" class="status-line">Ready</p>
+
+        <div id="localModePanel" class="mode-panel-local">
+          <div class="local-folders">
+            <div class="folder-row-new">
+              <div class="folder-info">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6H9l2 2h8.5A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z" /></svg>
+                <div class="folder-texts">
+                  <span>Input Directory</span>
+                  <span id="localInputFolderName" class="folder-name-val"></span>
+                  <span id="localInputPermissionStatus" style="display:none;"></span>
+                </div>
+              </div>
+              <button id="chooseInputFolder" type="button" class="select-btn">Select</button>
+            </div>
+            
+            <div class="folder-row-new">
+              <div class="folder-info">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6H9l2 2h8.5A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z" /></svg>
+                <div class="folder-texts">
+                  <span>Output Directory</span>
+                  <span id="localOutputFolderName" class="folder-name-val"></span>
+                  <span id="localOutputPermissionStatus" style="display:none;"></span>
+                </div>
+              </div>
+              <button id="chooseOutputFolder" type="button" class="select-btn">Select</button>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section id="logPanel" class="log-panel" data-collapsed="false">
+      <!-- Card 4: Actions -->
+      <section class="panel actions-panel">
+        <div class="row">
+          <button id="saveSettings" type="button" class="action-button">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M5 3h12l2 2v16H5Z"/><path d="M8 3v6h8V3"/><path d="M8 21v-7h8v7"/></svg>
+            Save
+          </button>
+          <button id="listSets" type="button" class="action-button">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+            Sets
+          </button>
+        </div>
+        
+        <div class="field-select-profile">
+          <label for="setSelect">Profile: </label>
+          <div class="select-shell-inline">
+            <select id="setSelect"><option value="">All sets</option></select>
+            <svg class="icon chevron-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+
+        <div class="row mt-12">
+          <button id="startJob" type="button" class="primary">
+            <svg class="icon fill-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z" stroke="none" /></svg>
+            Start
+          </button>
+          <button id="stopJob" type="button" class="danger">
+            <svg class="icon fill-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="7" width="10" height="10" rx="1" stroke="none"/></svg>
+            Stop
+          </button>
+        </div>
+        <p id="currentStep" style="display:none;"></p>
+      </section>
+
+      <!-- Card 5: ACTIVITY LOG -->
+      <section id="logPanel" class="panel log-panel">
         <div class="log-header-row">
-          <button
-            id="logToggle"
-            type="button"
-            class="log-toggle"
-            aria-expanded="true"
-            aria-controls="logList"
-          >
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 4h14v16H5Z" />
-              <path d="M8 8h8" />
-              <path d="M8 12h8" />
-              <path d="M8 16h5" />
-            </svg>
-            <span>Log</span>
-            <span id="logToggleLabel" class="log-toggle-label">Collapse</span>
+          <h2>ACTIVITY LOG</h2>
+          <button id="clearLog" type="button" class="icon-button trash-btn">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6 18 20H6L5 6"/><path d="M10 11v5"/><path d="M14 11v5"/></svg>
           </button>
-          <button id="clearLog" type="button" class="clear-log">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 6h18" />
-              <path d="M8 6V4h8v2" />
-              <path d="M19 6 18 20H6L5 6" />
-              <path d="M10 11v5" />
-              <path d="M14 11v5" />
-            </svg>
-            <span>Clear Log</span>
-          </button>
+          <button id="logToggle" style="display:none;"><span id="logToggleLabel"></span></button>
         </div>
         <ol id="logList" class="logs"></ol>
       </section>
