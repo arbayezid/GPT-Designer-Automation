@@ -1,6 +1,6 @@
 {
   "name": "gpt-designer-drive-sync",
-  "version": "0.1.28",
+  "version": "0.1.31",
   "private": true,
   "type": "module",
   "description": "Chrome MV3 extension for Drive-backed ChatGPT image prompt automation.",
