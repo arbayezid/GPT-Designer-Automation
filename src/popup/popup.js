@@ -49,8 +49,7 @@ const modeLocal = getElement('modeLocal');
 const driveModePanel = getElement('driveModePanel');
 const localModePanel = getElement('localModePanel');
 const chatGptSettings = getElement('chatGptSettings');
-const chatGptModeInstant = getElement('chatGptModeInstant');
-const chatGptModeThinking = getElement('chatGptModeThinking');
+const chatGptModelSelect = getElement('chatGptModelSelect');
 const thinkingEffortSelect = getElement('thinkingEffortSelect');
 const chatGptModeStatus = getElement('chatGptModeStatus');
 const inputFolderId = getElement('inputFolderId');
@@ -83,6 +82,7 @@ const themeToggle = getElement('themeToggle');
 let latestSettings = createEmptySettings();
 let latestStatus = null;
 let driveFieldsDirty = false;
+let chatGptModelDirty = false;
 let localPermissionCache = createEmptyLocalPermissionCache();
 
 modeDrive.addEventListener('change', () => {
@@ -93,12 +93,8 @@ modeLocal.addEventListener('change', () => {
   if (modeLocal.checked) void changeStorageMode('local');
 });
 
-chatGptModeInstant.addEventListener('change', () => {
-  if (chatGptModeInstant.checked) void changeChatGptSettings();
-});
-
-chatGptModeThinking.addEventListener('change', () => {
-  if (chatGptModeThinking.checked) void changeChatGptSettings();
+chatGptModelSelect.addEventListener('change', () => {
+  void changeChatGptSettings();
 });
 
 thinkingEffortSelect.addEventListener('change', () => {
@@ -275,11 +271,18 @@ async function changeStorageMode(mode) {
 }
 
 async function changeChatGptSettings() {
+  chatGptModelDirty = true;
   renderChatGptSettings(readSettingsFromUi().chatgpt);
   updateActionButtons();
 
   await runAction(async () => {
-    await saveCurrentSettings();
+    chatGptModelDirty = false;
+    try {
+      await saveCurrentSettings();
+    } catch (err) {
+      chatGptModelDirty = true;
+      throw err;
+    }
   });
 }
 
@@ -337,7 +340,9 @@ function renderStatus(status) {
   setLocalDirectoryName('input', settings.local.inputDirectoryName);
   setLocalDirectoryName('output', settings.local.outputDirectoryName);
   setSelectedMode(settings.mode);
-  renderChatGptSettings(settings.chatgpt);
+  if (!chatGptModelDirty) {
+    renderChatGptSettings(settings.chatgpt);
+  }
 
   renderStoragePanels(settings.mode);
   void renderDriveStatus();
@@ -521,11 +526,10 @@ function renderStoragePanels(mode) {
 }
 
 function renderChatGptSettings(settings) {
-  chatGptModeInstant.checked = settings.mode === 'instant';
-  chatGptModeThinking.checked = settings.mode === 'thinking';
+  chatGptModelSelect.value = settings.model;
   thinkingEffortSelect.value = settings.thinkingEffort;
-  thinkingEffortSelect.disabled = settings.mode === 'instant' || Boolean(latestStatus?.job.active);
-  chatGptSettings.dataset.mode = settings.mode;
+  thinkingEffortSelect.disabled = settings.model !== 'thinking' || Boolean(latestStatus?.job.active);
+  chatGptSettings.dataset.model = settings.model;
   setPillStatus(chatGptModeStatus, 'neutral', formatChatGptSettings(settings));
 }
 
@@ -542,9 +546,8 @@ function updateActionButtons(status = latestStatus) {
   stopJob.disabled = !active || Boolean(status?.job.stopRequested);
   modeDrive.disabled = active;
   modeLocal.disabled = active;
-  chatGptModeInstant.disabled = active;
-  chatGptModeThinking.disabled = active;
-  thinkingEffortSelect.disabled = active || chatGptModeInstant.checked;
+  chatGptModelSelect.disabled = active;
+  thinkingEffortSelect.disabled = active || settings.chatgpt.model !== 'thinking';
   inputFolderId.disabled = active || settings.mode !== 'drive';
   outputFolderId.disabled = active || settings.mode !== 'drive';
   chooseInputFolder.disabled = active || !localMode || !localPickerAvailable;
@@ -585,7 +588,7 @@ function readSettingsFromUi() {
 
 function readChatGptSettingsFromUi() {
   return {
-    mode: chatGptModeInstant.checked ? 'instant' : 'thinking',
+    model: chatGptModelSelect.value,
     thinkingEffort: normalizeChatGptThinkingEffort(thinkingEffortSelect.value)
   };
 }
@@ -644,12 +647,16 @@ function localPermissionMode(kind) {
 }
 
 function formatChatGptSettings(settings) {
-  if (settings.mode === 'instant') return 'Instant';
+  if (settings.model === 'instant') return 'Instant';
   return `Thinking • ${CHATGPT_THINKING_EFFORT_LABELS[settings.thinkingEffort]}`;
 }
 
-function normalizeChatGptMode(value) {
-  return value === 'instant' || value === 'thinking' ? value : 'thinking';
+function isThinkingModel(model) {
+  return model === 'thinking';
+}
+
+function normalizeChatGptModel(value) {
+  return value === 'instant' || value === 'thinking' ? value : 'instant';
 }
 
 function normalizeChatGptThinkingEffort(value) {
@@ -803,7 +810,7 @@ settings)
     outputFolderId: legacy.drive?.outputFolderId ?? legacy.outputFolderId ?? ''
   };
   const chatgpt = {
-    mode: normalizeChatGptMode(legacy.chatgpt?.mode),
+    model: normalizeChatGptModel(legacy.chatgpt?.model || legacy.chatgpt?.mode),
     thinkingEffort: normalizeChatGptThinkingEffort(legacy.chatgpt?.thinkingEffort)
   };
 
@@ -834,7 +841,7 @@ function createEmptySettings() {
       outputDirectoryName: ''
     },
     chatgpt: {
-      mode: 'thinking',
+      model: 'instant',
       thinkingEffort: 'extended'
     }
   };

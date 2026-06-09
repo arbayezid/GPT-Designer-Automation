@@ -50,20 +50,16 @@
           </div>
         </fieldset>
 
-        <fieldset id="chatGptModeField" class="mode-switch">
-          <div class="mode-options">
-            <input id="chatGptModeInstant" type="radio" name="chatGptMode" value="instant" />
-            <label for="chatGptModeInstant">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M13 2 5 14h6l-1 8 8-12h-6Z" /></svg>
-              <span>Instant</span>
-            </label>
-            <input id="chatGptModeThinking" type="radio" name="chatGptMode" value="thinking" checked />
-            <label for="chatGptModeThinking">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6" /><path d="M10 22h4" /><path d="M8 14a6 6 0 1 1 8 0c-.9.8-1 1.5-1 2H9c0-.5-.1-1.2-1-2Z" /></svg>
-              <span>Thinking</span>
-            </label>
+        <div class="model-select-row">
+          <label for="chatGptModelSelect">Model</label>
+          <div class="select-shell-inline">
+            <select id="chatGptModelSelect">
+              <option value="instant" selected>Instant</option>
+              <option value="thinking">Thinking</option>
+            </select>
+            <svg class="icon chevron-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
           </div>
-        </fieldset>
+        </div>
         
         <label id="thinkingEffortField" class="field" for="thinkingEffortSelect" style="display:none;">
           <select id="thinkingEffortSelect">

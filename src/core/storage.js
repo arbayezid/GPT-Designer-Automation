@@ -160,7 +160,7 @@ function mergeChatGptSettings(value, fallback) {
   const record = asRecord(value);
 
   return {
-    mode: readChatGptMode(record?.mode) ?? fallback.mode,
+    model: readChatGptModel(record?.model || record?.mode) ?? fallback.model,
     thinkingEffort: readChatGptThinkingEffort(record?.thinkingEffort) ?? fallback.thinkingEffort
   };
 }
@@ -178,7 +178,7 @@ function hasLocalSettings(value) {
 function hasChatGptSettings(value) {
   const record = asRecord(value);
   return (
-    readChatGptMode(record?.mode) !== undefined &&
+    readChatGptModel(record?.model || record?.mode) !== undefined &&
     readChatGptThinkingEffort(record?.thinkingEffort) !== undefined);
 
 }
@@ -187,7 +187,7 @@ function readStorageMode(value) {
   return value === 'drive' || value === 'local' ? value : undefined;
 }
 
-function readChatGptMode(value) {
+function readChatGptModel(value) {
   return value === 'instant' || value === 'thinking' ? value : undefined;
 }
 

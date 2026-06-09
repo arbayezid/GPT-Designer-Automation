@@ -21,7 +21,7 @@ export const DEFAULT_SETTINGS = {
     outputDirectoryName: ''
   },
   chatgpt: {
-    mode: 'thinking',
+    model: 'thinking',
     thinkingEffort: 'extended'
   }
 };

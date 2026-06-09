@@ -299,7 +299,8 @@ export class AutomationOrchestrator {
 }
 
 function formatChatGptSettings(settings) {
-  if (settings.mode === 'instant') return 'Instant mode';
+  const model = settings.model || settings.mode || 'instant';
+  if (model === 'instant') return 'Instant mode';
 
   const effort =
   settings.thinkingEffort === 'light' ?

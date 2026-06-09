@@ -236,17 +236,29 @@ button:disabled, input:disabled, select:disabled {
 }
 .chevron-icon { position: absolute; right: 0; color: var(--text-tertiary); }
 
+/* ─── Model Select Row (config panel) ─── */
+.model-select-row {
+  display: flex; align-items: center;
+  background: var(--segment-bg); border-radius: 8px;
+  padding: 4px 8px 4px 12px; height: 40px; margin: 0 0 12px 0;
+}
+.model-select-row:last-child { margin-bottom: 0; }
+.model-select-row label {
+  color: var(--text-secondary); font-size: 13px; font-weight: 500;
+  white-space: nowrap; margin-right: 8px; cursor: default;
+}
+
 /* ─── Local Folders ─── */
 .local-folders { display: flex; flex-direction: column; gap: 12px; }
 .folder-row-new {
   display: flex; align-items: center; justify-content: space-between;
   background: var(--input-bg); border-radius: 8px; padding: 12px; border: 1px solid var(--input-border);
 }
-.folder-info { display: flex; align-items: center; gap: 12px; }
-.folder-info .icon { color: var(--text-secondary); }
-.folder-texts { display: flex; flex-direction: column; }
-.folder-texts span { font-size: 13px; color: var(--text-primary); }
-.folder-name-val { font-size: 11px !important; color: var(--text-tertiary) !important; margin-top: 2px; }
+.folder-info { display: flex; align-items: flex-start; gap: 10px; }
+.folder-info .icon { color: var(--text-secondary); margin-top: 1px; }
+.folder-texts { display: flex; flex-direction: column; gap: 2px; }
+.folder-texts span:first-child { font-size: 13px; font-weight: 500; color: var(--text-primary); line-height: 1.2; }
+.folder-name-val { font-size: 11px !important; color: var(--text-tertiary) !important; line-height: 1.2; }
 
 /* ─── Inputs ─── */
 .input-shell { position: relative; display: block; margin-top: 8px; }

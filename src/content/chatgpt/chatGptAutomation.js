@@ -61,10 +61,11 @@ export class ChatGptAutomation {
       const ready = await this.waitForComposerReady(operation);
       if (!ready) throw new Error('ChatGPT composer was not ready.');
 
-      if (request.mode === 'instant') {
-        await this.ensureInstantMode(operation);
-      } else {
+      const model = request.model || request.mode || 'instant';
+      if (model === 'thinking') {
         await this.ensureThinkingMode(request.thinkingEffort, operation);
+      } else {
+        await this.ensureInstantMode(operation);
       }
 
       return {
@@ -188,6 +189,10 @@ export class ChatGptAutomation {
       },
       { timeoutMs: CHATGPT_READY_TIMEOUT_MS, onTick: () => this.assertNotCancelled(operation) }
     );
+  }
+
+  isThinkingModel(model) {
+    return model === 'thinking';
   }
 
   async ensureInstantMode(operation) {
