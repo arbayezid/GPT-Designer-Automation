@@ -18,8 +18,8 @@ describe('storage settings', () => {
     const { set } = stubChromeStorage({
       [STORAGE_KEYS.settings]: {
         inputFolderId: 'input-folder',
-        outputFolderId: 'output-folder',
-      },
+        outputFolderId: 'output-folder'
+      }
     });
 
     const settings = await new StorageService().getSettings();
@@ -30,8 +30,8 @@ describe('storage settings', () => {
       outputFolderId: 'output-folder',
       drive: {
         inputFolderId: 'input-folder',
-        outputFolderId: 'output-folder',
-      },
+        outputFolderId: 'output-folder'
+      }
     });
     expect(set).toHaveBeenCalledWith({ [STORAGE_KEYS.settings]: settings });
   });
@@ -44,13 +44,13 @@ describe('storage settings', () => {
         outputFolderId: 'stale-output',
         drive: {
           inputFolderId: 'drive-input',
-          outputFolderId: 'drive-output',
+          outputFolderId: 'drive-output'
         },
         local: {
           inputDirectoryName: 'Input',
-          outputDirectoryName: 'Output',
-        },
-      },
+          outputDirectoryName: 'Output'
+        }
+      }
     });
 
     const settings = await new StorageService().getSettings();
@@ -61,13 +61,13 @@ describe('storage settings', () => {
       outputFolderId: 'drive-output',
       drive: {
         inputFolderId: 'drive-input',
-        outputFolderId: 'drive-output',
+        outputFolderId: 'drive-output'
       },
       local: {
         inputDirectoryName: 'Input',
-        outputDirectoryName: 'Output',
+        outputDirectoryName: 'Output'
       },
-      chatgpt: DEFAULT_SETTINGS.chatgpt,
+      chatgpt: DEFAULT_SETTINGS.chatgpt
     });
     expect(set).toHaveBeenCalledWith({ [STORAGE_KEYS.settings]: settings });
   });
@@ -77,7 +77,7 @@ describe('storage settings', () => {
 
     await new StorageService().saveSettings({
       inputFolderId: 'input-folder',
-      outputFolderId: 'output-folder',
+      outputFolderId: 'output-folder'
     });
 
     expect(stored[STORAGE_KEYS.settings]).toEqual({
@@ -86,8 +86,8 @@ describe('storage settings', () => {
       outputFolderId: 'output-folder',
       drive: {
         inputFolderId: 'input-folder',
-        outputFolderId: 'output-folder',
-      },
+        outputFolderId: 'output-folder'
+      }
     });
   });
 
@@ -98,35 +98,35 @@ describe('storage settings', () => {
       ...DEFAULT_SETTINGS,
       chatgpt: {
         mode: 'instant',
-        thinkingEffort: 'heavy',
-      },
+        thinkingEffort: 'heavy'
+      }
     });
 
     expect(stored[STORAGE_KEYS.settings]).toMatchObject({
       chatgpt: {
         mode: 'instant',
-        thinkingEffort: 'heavy',
-      },
+        thinkingEffort: 'heavy'
+      }
     });
   });
 });
 
-function stubChromeStorage(initial: Record<string, unknown> = {}): {
-  stored: Record<string, unknown>;
-  set: ReturnType<typeof vi.fn>;
-} {
+function stubChromeStorage(initial = {})
+
+
+{
   const stored = { ...initial };
-  const set = vi.fn(async (items: Record<string, unknown>) => {
+  const set = vi.fn(async (items) => {
     Object.assign(stored, items);
   });
 
   vi.stubGlobal('chrome', {
     storage: {
       local: {
-        get: vi.fn(async (key: string) => ({ [key]: stored[key] })),
-        set,
-      },
-    },
+        get: vi.fn(async (key) => ({ [key]: stored[key] })),
+        set
+      }
+    }
   });
 
   return { stored, set };

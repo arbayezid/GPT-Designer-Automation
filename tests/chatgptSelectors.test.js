@@ -17,13 +17,13 @@ import {
   getLatestAssistantTurn,
   getUploadedImageTileCount,
   hasResponseActionButtons,
-  isMenuItemChecked,
-} from '../src/content/chatgpt/selectors';
+  isMenuItemChecked } from
+'../src/content/chatgpt/selectors';
 
 describe('ChatGPT selectors', () => {
-  const fixturePath = ['html-selectors.html', 'docs/html-selectors.html']
-    .map((path) => resolve(process.cwd(), path))
-    .find((path) => existsSync(path));
+  const fixturePath = ['html-selectors.html', 'docs/html-selectors.html'].
+  map((path) => resolve(process.cwd(), path)).
+  find((path) => existsSync(path));
   if (!fixturePath) throw new Error('Missing html-selectors.html fixture.');
   const html = readFileSync(fixturePath, 'utf8');
 
@@ -40,7 +40,7 @@ describe('ChatGPT selectors', () => {
 
   it('scopes generated image extraction to the latest assistant turn', () => {
     const dom = new JSDOM(html, { url: 'https://chatgpt.com/' });
-    globalThis.window = dom.window as unknown as Window & typeof globalThis;
+    globalThis.window = dom.window;
     globalThis.document = dom.window.document;
 
     const turns = getAssistantTurns(dom.window.document);
@@ -65,7 +65,7 @@ describe('ChatGPT selectors', () => {
           <button aria-label="More actions" type="button"></button>
         </div>
       </section>`,
-      { url: 'https://chatgpt.com/' },
+      { url: 'https://chatgpt.com/' }
     );
 
     expect(hasResponseActionButtons(dom.window.document)).toBe(true);
@@ -73,7 +73,7 @@ describe('ChatGPT selectors', () => {
 
   it('finds ChatGPT model and thinking effort controls from captured HTML', () => {
     const dom = new JSDOM(html, { url: 'https://chatgpt.com/' });
-    globalThis.window = dom.window as unknown as Window & typeof globalThis;
+    globalThis.window = dom.window;
     globalThis.document = dom.window.document;
 
     expect(findModelSelectorButton(dom.window.document)).not.toBeNull();
@@ -92,7 +92,7 @@ describe('ChatGPT selectors', () => {
       `<section data-turn="assistant" data-testid="conversation-turn-2">
         <div aria-label="Response actions" role="group" tabindex="-1"></div>
       </section>`,
-      { url: 'https://chatgpt.com/' },
+      { url: 'https://chatgpt.com/' }
     );
 
     expect(hasResponseActionButtons(dom.window.document)).toBe(true);

@@ -4,8 +4,8 @@ import {
   filesInFolderQuery,
   isImageFile,
   isPromptSheetFile,
-  setFoldersQuery,
-} from '../src/drive/driveQueries';
+  setFoldersQuery } from
+'../src/drive/driveQueries';
 
 describe('drive queries', () => {
   it('builds set folder query under the input folder', () => {
@@ -25,7 +25,7 @@ describe('drive queries', () => {
   it('classifies image and prompt files', () => {
     expect(isImageFile({ id: '1', name: 'a.png', mimeType: 'image/png' })).toBe(true);
     expect(isPromptSheetFile({ id: '2', name: 'prompts.xlsx', mimeType: 'application/octet-stream' })).toBe(
-      true,
+      true
     );
     expect(isPromptSheetFile({ id: '3', name: 'notes.txt', mimeType: 'text/plain' })).toBe(false);
   });
