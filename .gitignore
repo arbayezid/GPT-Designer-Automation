@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+*.log
+drive-service-account*.json
+data/drive-service-account*.json

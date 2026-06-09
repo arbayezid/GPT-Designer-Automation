@@ -1,0 +1,27 @@
+{
+  "name": "gpt-designer-drive-sync",
+  "version": "0.1.20",
+  "private": true,
+  "type": "module",
+  "description": "Chrome MV3 extension for Drive-backed ChatGPT image prompt automation.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^9.27.0",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.5.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.1.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "read-excel-file": "^9.0.9"
+  }
+}

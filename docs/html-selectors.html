@@ -1,0 +1,1800 @@
+# Composer:
+<form
+  class="group/composer w-full"
+  style="view-transition-name: var(--vt-composer)"
+  data-type="unified-composer"
+>
+  <div class="hidden">
+    <input
+      multiple=""
+      type="file"
+      style="
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        clip-path: inset(50%);
+        height: 1px;
+        margin: 0 -1px -1px 0;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+      "
+      tabindex="-1"
+      id="upload-files"
+    />
+  </div>
+  <div class="">
+    <div
+      class="bg-token-bg-primary dark:bg-token-bg-elevated-primary dark-oled:bg-token-bg-primary corner-superellipse/1.1 relative cursor-text overflow-clip bg-clip-padding p-2.5 contain-inline-size motion-safe:transition-colors motion-safe:duration-200 motion-safe:ease-in-out grid grid-cols-[auto_1fr_auto] [grid-template-areas:'header_header_header'_'leading_primary_trailing'_'._footer_.'] group-data-expanded/composer:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] max-sm:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] shadow-short-composer"
+      data-composer-surface="true"
+      style="border-radius: 28px"
+    >
+      <div class="[grid-area:leading]">
+        <span class="flex" data-state="closed"
+          ><button
+            type="button"
+            class="composer-btn"
+            data-testid="composer-plus-btn"
+            aria-label="Add files and more"
+            id="composer-plus-btn"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            data-state="closed"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              aria-hidden="true"
+              class="icon"
+            >
+              <use href="/cdn/assets/sprites-core-6185c8f4.svg#6be74c" fill="currentColor"></use>
+            </svg></button
+        ></span>
+      </div>
+      <div
+        class="-my-2.5 flex overflow-x-hidden px-1.5 [grid-area:primary] group-data-expanded/composer:mb-0 group-data-expanded/composer:px-2.5 min-h-14 items-center"
+      >
+        <div
+          class="wcDTda_prosemirror-parent text-token-text-primary max-h-[max(30svh,5rem)] max-h-52 min-h-[var(--deep-research-composer-extra-height,unset)] flex-1 overflow-auto [scrollbar-width:thin] default-browser vertical-scroll-fade-mask"
+        >
+          <textarea
+            class="wcDTda_fallbackTextarea"
+            name="prompt-textarea"
+            autofocus=""
+            placeholder="Ask anything"
+            aria-label="Chat with ChatGPT"
+            data-virtualkeyboard="true"
+            style="display: none"
+          ></textarea>
+          <script nonce="">
+            window.__oai_logHTML
+              ? window.__oai_logHTML()
+              : (window.__oai_SSR_HTML = window.__oai_SSR_HTML || Date.now());
+            requestAnimationFrame(function () {
+              window.__oai_logTTI
+                ? window.__oai_logTTI()
+                : (window.__oai_SSR_TTI = window.__oai_SSR_TTI || Date.now());
+            });
+          </script>
+          <div
+            contenteditable="true"
+            translate="no"
+            class="ProseMirror"
+            id="prompt-textarea"
+            data-virtualkeyboard="true"
+            role="textbox"
+            aria-multiline="true"
+            aria-label="Chat with ChatGPT"
+          >
+            <p data-placeholder="Ask anything" class="placeholder">
+              <br class="ProseMirror-trailingBreak" />
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5 [grid-area:trailing]">
+        <div class="relative ms-1 flex items-center gap-1.5">
+          <div>
+            <!--&--><!--/&--><span class="" data-state="closed"
+              ><button
+                type="button"
+                class="__composer-pill __composer-pill--neutral group/pill"
+                data-tone="neutral"
+                id="radix-_r_8_"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                data-state="closed"
+              >
+                <span class="max-w-40 truncate [[data-collapse-labels]_&amp;]:sr-only">Light</span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                  class="icon-sm -me-0.5 h-3.5 w-3.5 text-token-text-tertiary"
+                  inert=""
+                >
+                  <use
+                    href="/cdn/assets/sprites-core-6185c8f4.svg#ba3792"
+                    fill="currentColor"
+                  ></use>
+                </svg></button
+            ></span>
+          </div>
+        </div>
+        <div class="ms-auto flex items-center gap-1.5">
+          <div>
+            <div
+              id="_r_b_"
+              popover="hint"
+              role="tooltip"
+              class="fixed inset-s-[anchor(center)] inset-e-auto top-[calc(anchor(bottom)+var(--spacing))] bottom-auto h-fit -translate-x-1/2 [position-try-fallbacks:flip-block] overflow-visible bg-transparent z-50"
+              style="position-anchor: --anchor-_r_b_"
+            ></div>
+            <button
+              aria-describedby="_r_b_"
+              interestfor="_r_b_"
+              disabled=""
+              id="composer-submit-button"
+              aria-label="Send prompt"
+              data-testid="send-button"
+              class="composer-submit-btn composer-submit-button-color h-9 w-9"
+              style="anchor-name: --anchor-_r_b_"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                aria-hidden="true"
+                class="icon"
+              >
+                <use href="/cdn/assets/sprites-core-6185c8f4.svg#01bab7" fill="currentColor"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div
+  data-radix-popper-content-wrapper=""
+  dir="ltr"
+  style="
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    transform: translate(605px, 630px);
+    min-width: max-content;
+    --radix-popper-transform-origin: 0% 237px;
+    z-index: 50;
+    --radix-popper-available-width: 1309px;
+    --radix-popper-available-height: 861px;
+    --radix-popper-anchor-width: 36px;
+    --radix-popper-anchor-height: 36px;
+  "
+>
+  <div
+    data-side="top"
+    data-align="start"
+    role="menu"
+    aria-orientation="vertical"
+    data-state="open"
+    data-radix-menu-content=""
+    dir="ltr"
+    id="radix-_R_2amsonacl8l3nljjb31hq9ikcmH1_"
+    aria-labelledby="radix-_R_2amsonacl8l3nljjb31hq9ikcm_"
+    class="z-50 max-w-xs rounded-2xl popover bg-token-main-surface-primary dark:bg-[#353535] shadow-long py-1.5 data-[unbound-width]:min-w-[unset] data-[custom-padding]:py-0 MA-gxq_content [--trigger-width:calc(var(--radix-dropdown-menu-trigger-width)-2*var(--radix-align-offset))] min-w-(--trigger-width) max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto select-none content-sheet-section:flex content-sheet-section:flex-col content-sheet-section:gap-3"
+    tabindex="-1"
+    data-orientation="vertical"
+    style="
+      outline: none;
+      --radix-align-offset: -7px;
+      --min-items: 5.8;
+      --radix-dropdown-menu-content-transform-origin: var(--radix-popper-transform-origin);
+      --radix-dropdown-menu-content-available-width: var(--radix-popper-available-width);
+      --radix-dropdown-menu-content-available-height: var(--radix-popper-available-height);
+      --radix-dropdown-menu-trigger-width: var(--radix-popper-anchor-width);
+      --radix-dropdown-menu-trigger-height: var(--radix-popper-anchor-height);
+    "
+  >
+    <div
+      role="group"
+      class="empty:hidden [:not(:has(div:not([role=group])))]:hidden before:bg-token-border-default content-sheet:before:my-3 content-sheet:before:mx-6 before:mx-4 before:my-1 before:block before:h-px first:before:hidden [&amp;:nth-child(1_of_:has(div:not([role=group])))]:before:hidden content-sheet:content-sheet-inset-section"
+    >
+      <div
+        role="menuitem"
+        tabindex="0"
+        class="group __menu-item"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <div class="flex min-w-0 items-center gap-1.5">
+          <div
+            class="flex items-center justify-center [opacity:var(--menu-item-icon-opacity,1)] icon"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              aria-hidden="true"
+              class="icon"
+            >
+              <use href="/cdn/assets/sprites-core-6185c8f4.svg#712359" fill="currentColor"></use>
+            </svg>
+          </div>
+          <div class="flex min-w-0 grow items-center gap-2.5">
+            <div class="truncate">Upload photos &amp; files</div>
+          </div>
+        </div>
+        <div class="trailing highlight text-token-text-tertiary">
+          <div
+            class="box-trim-text-0.25 inline-flex whitespace-pre *:inline-flex *:font-sans *:not-last:after:px-0.5 *:not-last:after:content-['+'] touch:hidden"
+          >
+            <kbd aria-label="Control"><span class="min-w-[1em]">Ctrl</span></kbd
+            ><kbd><span class="min-w-[1em]">U</span></kbd>
+          </div>
+        </div>
+      </div>
+      <div
+        role="menuitem"
+        id="radix-_r_gp_"
+        aria-haspopup="menu"
+        aria-expanded="true"
+        aria-controls="radix-_r_go_"
+        data-state="open"
+        tabindex="0"
+        data-has-submenu=""
+        class="group __menu-item"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <div class="flex min-w-0 items-center gap-1.5">
+          <div
+            class="flex items-center justify-center [opacity:var(--menu-item-icon-opacity,1)] icon"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              aria-hidden="true"
+              class="icon"
+            >
+              <use href="/cdn/assets/sprites-core-6185c8f4.svg#a35fbc" fill="currentColor"></use>
+            </svg>
+          </div>
+          <span class="line-clamp-1 text-ellipsis">Recent files</span>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          aria-hidden="true"
+          data-rtl-flip=""
+          class="icon-sm -me-0.25"
+        >
+          <use href="/cdn/assets/sprites-core-6185c8f4.svg#d3876b" fill="currentColor"></use>
+        </svg>
+      </div>
+    </div>
+    <div
+      role="group"
+      class="empty:hidden [:not(:has(div:not([role=group])))]:hidden before:bg-token-border-default content-sheet:before:my-3 content-sheet:before:mx-6 before:mx-4 before:my-1 before:block before:h-px first:before:hidden [&amp;:nth-child(1_of_:has(div:not([role=group])))]:before:hidden"
+    >
+      <div role="group">
+        <div
+          role="menuitemradio"
+          aria-checked="false"
+          tabindex="0"
+          class="group __menu-item"
+          data-state="unchecked"
+          data-orientation="vertical"
+          data-radix-collection-item=""
+        >
+          <div class="flex min-w-0 items-center gap-1.5">
+            <div
+              class="flex items-center justify-center [opacity:var(--menu-item-icon-opacity,1)] icon"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                class="icon"
+                aria-label=""
+              >
+                <use href="/cdn/assets/sprites-core-6185c8f4.svg#266724" fill="currentColor"></use>
+              </svg>
+            </div>
+            <div class="flex min-w-0 grow items-center gap-2.5">
+              <div class="truncate">Create image</div>
+            </div>
+          </div>
+          <div class="trailing" data-trailing-style="radio-check">
+            <div class="icon-sm group-radix-state-checked:hidden"></div>
+          </div>
+        </div>
+        <div
+          role="menuitemradio"
+          aria-checked="false"
+          tabindex="0"
+          class="group __menu-item"
+          data-state="unchecked"
+          data-orientation="vertical"
+          data-radix-collection-item=""
+        >
+          <div class="flex min-w-0 items-center gap-1.5">
+            <div
+              class="flex items-center justify-center [opacity:var(--menu-item-icon-opacity,1)] icon"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                class="icon"
+                aria-label=""
+              >
+                <use href="/cdn/assets/sprites-core-6185c8f4.svg#5d3112" fill="currentColor"></use>
+              </svg>
+            </div>
+            <div class="flex min-w-0 grow items-center gap-2.5">
+              <div class="truncate">Deep research</div>
+            </div>
+          </div>
+          <div class="trailing" data-trailing-style="radio-check">
+            <div class="icon-sm group-radix-state-checked:hidden"></div>
+          </div>
+        </div>
+        <div
+          role="menuitemradio"
+          aria-checked="false"
+          tabindex="0"
+          class="group __menu-item"
+          data-state="unchecked"
+          data-orientation="vertical"
+          data-radix-collection-item=""
+        >
+          <div class="flex min-w-0 items-center gap-1.5">
+            <div
+              class="flex items-center justify-center [opacity:var(--menu-item-icon-opacity,1)] icon"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                class="icon"
+                aria-label=""
+              >
+                <use href="/cdn/assets/sprites-core-6185c8f4.svg#6b0d8c" fill="currentColor"></use>
+              </svg>
+            </div>
+            <div class="flex min-w-0 grow items-center gap-2.5">
+              <div class="truncate">Web search</div>
+            </div>
+          </div>
+          <div class="trailing" data-trailing-style="radio-check">
+            <div class="icon-sm group-radix-state-checked:hidden"></div>
+          </div>
+        </div>
+      </div>
+      <div
+        role="menuitem"
+        id="radix-_r_gv_"
+        aria-haspopup="menu"
+        aria-expanded="false"
+        aria-controls="radix-_r_gu_"
+        data-state="closed"
+        tabindex="0"
+        data-has-submenu=""
+        class="group __menu-item"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <div class="flex min-w-0 items-center gap-1.5">
+          <div
+            class="flex items-center justify-center [opacity:var(--menu-item-icon-opacity,1)] icon"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              aria-hidden="true"
+              class="icon"
+            >
+              <use href="/cdn/assets/sprites-core-6185c8f4.svg#f6d0e2" fill="currentColor"></use>
+            </svg>
+          </div>
+          <div class="flex min-w-0 grow items-center gap-2.5">
+            <div class="truncate">More</div>
+          </div>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          aria-hidden="true"
+          data-rtl-flip=""
+          class="icon-sm -me-0.25"
+        >
+          <use href="/cdn/assets/sprites-core-6185c8f4.svg#d3876b" fill="currentColor"></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+# Composer after image added:
+<div class="">
+  <div
+    class="bg-token-bg-primary dark:bg-token-bg-elevated-primary dark-oled:bg-token-bg-primary corner-superellipse/1.1 relative cursor-text overflow-clip bg-clip-padding p-2.5 contain-inline-size motion-safe:transition-colors motion-safe:duration-200 motion-safe:ease-in-out grid grid-cols-[auto_1fr_auto] [grid-template-areas:'header_header_header'_'leading_primary_trailing'_'._footer_.'] group-data-expanded/composer:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] max-sm:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] shadow-short-composer"
+    data-composer-surface="true"
+    style="border-radius: 28px"
+  >
+    <div class="[grid-area:leading]">
+      <span class="flex" data-state="closed"
+        ><button
+          type="button"
+          class="composer-btn"
+          data-testid="composer-plus-btn"
+          aria-label="Add files and more"
+          id="composer-plus-btn"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          data-state="closed"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            aria-hidden="true"
+            class="icon"
+          >
+            <use href="/cdn/assets/sprites-core-6185c8f4.svg#6be74c" fill="currentColor"></use>
+          </svg></button
+      ></span>
+    </div>
+    <div
+      class="-my-2.5 flex overflow-x-hidden px-1.5 [grid-area:primary] group-data-expanded/composer:mb-0 group-data-expanded/composer:px-2.5 min-h-14 items-center"
+    >
+      <div
+        class="wcDTda_prosemirror-parent text-token-text-primary max-h-[max(30svh,5rem)] max-h-52 min-h-[var(--deep-research-composer-extra-height,unset)] flex-1 overflow-auto [scrollbar-width:thin] default-browser vertical-scroll-fade-mask"
+      >
+        <textarea
+          class="wcDTda_fallbackTextarea"
+          name="prompt-textarea"
+          autofocus=""
+          placeholder="Ask anything"
+          aria-label="Chat with ChatGPT"
+          data-virtualkeyboard="true"
+          style="display: none"
+        ></textarea>
+        <script nonce="">
+          window.__oai_logHTML
+            ? window.__oai_logHTML()
+            : (window.__oai_SSR_HTML = window.__oai_SSR_HTML || Date.now());
+          requestAnimationFrame(function () {
+            window.__oai_logTTI
+              ? window.__oai_logTTI()
+              : (window.__oai_SSR_TTI = window.__oai_SSR_TTI || Date.now());
+          });
+        </script>
+        <div
+          contenteditable="true"
+          translate="no"
+          class="ProseMirror"
+          id="prompt-textarea"
+          data-virtualkeyboard="true"
+          role="textbox"
+          aria-multiline="true"
+          aria-label="Chat with ChatGPT"
+        >
+          <p data-placeholder="Ask anything" class="placeholder">
+            <br class="ProseMirror-trailingBreak" />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-1.5 [grid-area:trailing]">
+      <div class="relative ms-1 flex items-center gap-1.5">
+        <div>
+          <!--&--><!--/&--><span class="" data-state="closed"
+            ><button
+              type="button"
+              class="__composer-pill __composer-pill--neutral group/pill"
+              data-tone="neutral"
+              id="radix-_r_8_"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              data-state="closed"
+            >
+              <span class="max-w-40 truncate [[data-collapse-labels]_&amp;]:sr-only">Light</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                aria-hidden="true"
+                class="icon-sm -me-0.5 h-3.5 w-3.5 text-token-text-tertiary"
+                inert=""
+              >
+                <use href="/cdn/assets/sprites-core-6185c8f4.svg#ba3792" fill="currentColor"></use>
+              </svg></button
+          ></span>
+        </div>
+      </div>
+      <div class="ms-auto flex items-center gap-1.5">
+        <div>
+          <div
+            id="_r_b_"
+            popover="hint"
+            role="tooltip"
+            class="fixed inset-s-[anchor(center)] inset-e-auto top-[calc(anchor(bottom)+var(--spacing))] bottom-auto h-fit -translate-x-1/2 [position-try-fallbacks:flip-block] overflow-visible bg-transparent z-50"
+            style="position-anchor: --anchor-_r_b_"
+          ></div>
+          <button
+            aria-describedby="_r_b_"
+            interestfor="_r_b_"
+            id="composer-submit-button"
+            aria-label="Send prompt"
+            data-testid="send-button"
+            class="composer-submit-btn composer-submit-button-color h-9 w-9"
+            style="anchor-name: --anchor-_r_b_"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              aria-hidden="true"
+              class="icon"
+            >
+              <use href="/cdn/assets/sprites-core-6185c8f4.svg#01bab7" fill="currentColor"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="-mx-2.5 -mt-2.5 flex flex-col [grid-area:header] mb-2.5">
+      <div class="w-full">
+        <div
+          class="no-scrollbar horizontal-scroll-fade-mask flex flex-nowrap gap-2 overflow-x-auto px-2.5 pt-2.5 pb-1.5 [--edge-fade-distance:1rem]"
+        >
+          <div
+            class="relative flex group/file-tile text-token-text-primary relative inline-flex w-(--file-tile-width) min-w-(--file-tile-width) justify-between text-sm [--file-tile-image-size:3.625rem] aspect-square [--file-tile-width:56px]"
+            role="group"
+            aria-label="Screenshot at May 19 15-11-26(63).png"
+          >
+            <div class="absolute inset-0 z-0 grid" data-default-action="true">
+              <div class="max-h-full min-h-0 w-full justify-self-start">
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-expanded="false"
+                  aria-controls="radix-_r_ha_"
+                  data-state="closed"
+                  class="behavior-btn interactive-bg-secondary border-token-interactive-border-secondary-default border hover:brightness-105 active:brightness-95 corner-superellipse/1.1 keyboard-focused:brightness-95 h-full w-full overflow-clip rounded-xl outline-none"
+                  aria-label="Open image: User uploaded image"
+                >
+                  <img
+                    alt=""
+                    class="h-full w-full object-cover"
+                    draggable="false"
+                    src="https://chatgpt.com/backend-api/estuary/content?id=file_000000002e7c71f5abed5ded54092f5e&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=27c7e12d298fbeb9976142395a4f6e3b9c5459880423a62342685d50b2e0d404&amp;v=0"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="pointer-events-none z-1 max-w-full min-w-0"></div>
+            <div class="z-1 flex items-start">
+              <div class="me-1.5 mt-1.5 flex gap-1 text-xs">
+                <span class="" data-state="closed"
+                  ><button
+                    type="button"
+                    aria-label="Remove file 1: Screenshot at May 19 15-11-26(63).png"
+                    class="behavior-btn interactive-bg-primary interactive-label-primary aspect-square flex w-(--file-tile-action-size) items-center justify-center rounded-full"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      aria-label=""
+                      class="icon-sm"
+                    >
+                      <use
+                        href="/cdn/assets/sprites-core-6185c8f4.svg#23ce94"
+                        fill="currentColor"
+                      ></use>
+                    </svg></button
+                ></span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="relative flex group/file-tile text-token-text-primary relative inline-flex w-(--file-tile-width) min-w-(--file-tile-width) justify-between text-sm [--file-tile-image-size:3.625rem] aspect-square [--file-tile-width:56px]"
+            role="group"
+            aria-label="Screenshot at May 19 15-02-42(46).png"
+          >
+            <div class="absolute inset-0 z-0 grid" data-default-action="true">
+              <div class="max-h-full min-h-0 w-full justify-self-start">
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-expanded="false"
+                  aria-controls="radix-_r_hd_"
+                  data-state="closed"
+                  class="behavior-btn interactive-bg-secondary border-token-interactive-border-secondary-default border hover:brightness-105 active:brightness-95 corner-superellipse/1.1 keyboard-focused:brightness-95 h-full w-full overflow-clip rounded-xl outline-none"
+                  aria-label="Open image: User uploaded image"
+                >
+                  <img
+                    alt=""
+                    class="h-full w-full object-cover"
+                    draggable="false"
+                    src="https://chatgpt.com/backend-api/estuary/content?id=file_000000009d5071f5ab0cb966378a932c&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=7c776b31f5084d34b6f19b9bfdbf0e9a86ec615aa1fe4fff49cb7169e7ec67cb&amp;v=0"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="pointer-events-none z-1 max-w-full min-w-0"></div>
+            <div class="z-1 flex items-start">
+              <div class="me-1.5 mt-1.5 flex gap-1 text-xs">
+                <span class="" data-state="closed"
+                  ><button
+                    type="button"
+                    aria-label="Remove file 2: Screenshot at May 19 15-02-42(46).png"
+                    class="behavior-btn interactive-bg-primary interactive-label-primary aspect-square flex w-(--file-tile-action-size) items-center justify-center rounded-full"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      aria-label=""
+                      class="icon-sm"
+                    >
+                      <use
+                        href="/cdn/assets/sprites-core-6185c8f4.svg#23ce94"
+                        fill="currentColor"
+                      ></use>
+                    </svg></button
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+# Respnse with image:
+<div
+  class=""
+  data-turn-id-container="52cff575-2da6-4aac-8567-31be6a143ddc"
+  data-is-intersecting="true"
+>
+  <section
+    class="text-token-text-primary w-full focus:outline-none has-data-writing-block:pointer-events-none [&amp;:has([data-writing-block])&gt;*]:pointer-events-auto R6Vx5W_threadScrollVars scroll-mb-[calc(var(--scroll-root-safe-area-inset-bottom,0px)+var(--thread-response-height))] scroll-mt-[calc(var(--header-height)+min(200px,max(70px,20svh)))]"
+    dir="auto"
+    data-turn-id="52cff575-2da6-4aac-8567-31be6a143ddc"
+    data-turn-id-container="52cff575-2da6-4aac-8567-31be6a143ddc"
+    data-testid="conversation-turn-4"
+    data-scroll-anchor="false"
+    data-turn="assistant"
+  >
+    <h4 class="sr-only select-none">ChatGPT said:</h4>
+    <div
+      class="text-base my-auto mx-auto [--thread-content-margin:var(--thread-content-margin-xs,calc(var(--spacing)*4))] @w-sm/main:[--thread-content-margin:var(--thread-content-margin-sm,calc(var(--spacing)*6))] @w-lg/main:[--thread-content-margin:var(--thread-content-margin-lg,calc(var(--spacing)*16))] px-(--thread-content-margin)"
+    >
+      <div
+        class="[--thread-content-max-width:40rem] @w-lg/main:[--thread-content-max-width:48rem] mx-auto max-w-(--thread-content-max-width) flex-1 group/turn-messages focus-visible:outline-hidden relative flex w-full min-w-0 flex-col agent-turn"
+      >
+        <div class="flex max-w-full flex-col gap-4 grow">
+          <div
+            class="absolute flex h-8 w-3 origin-center items-center justify-center"
+            style="opacity: 0; transform: scale(0)"
+          >
+            <div class="bg-token-text-primary h-3 w-3 rounded-full"></div>
+          </div>
+          <div class="relative my-1 min-h-6">
+            <div
+              class="relative flex origin-top-left flex-col gap-2 overflow-x-clip rtl:origin-top-right"
+              style="opacity: 1; transform: none"
+            >
+              <div class="relative w-full text-start">
+                <div class="flex w-full flex-row items-start justify-between gap-4 text-start">
+                  <button type="button" class="flex min-w-0 shrink-1 gap-0.5 items-center">
+                    <span class="loading-shimmer font-medium w-full"
+                      ><span
+                        class="flex gap-1 text-start align-middle items-center truncate"
+                        style="opacity: 1"
+                        ><span class="flex min-w-0 gap-1 items-center"
+                          ><span class="min-w-0 truncate"
+                            >Planning 10 mobile app screens</span
+                          ></span
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          aria-hidden="true"
+                          data-rtl-flip=""
+                          class="icon-xs"
+                        >
+                          <use
+                            href="/cdn/assets/sprites-core-6185c8f4.svg#b140e7"
+                            fill="currentColor"
+                          ></use></svg></span
+                    ></span>
+                  </button>
+                </div>
+              </div>
+              <div class="max-w-[calc(0.8*var(--thread-content-max-width,40rem))]"></div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="pb-2">
+              <div class="flex items-start gap-2">
+                <div class="contents">
+                  <div
+                    class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-[36px]"
+                    id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                    style="aspect-ratio: 0.562799 / 1"
+                  >
+                    <div
+                      class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                      tabindex="0"
+                      role="button"
+                      aria-labelledby="_r_a7_"
+                    >
+                      <span
+                        class="pointer-events-none absolute end-3 top-3 z-4 inline-flex items-center rounded-full bg-black/15 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-md"
+                        >Preview</span
+                      >
+                      <div
+                        class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                        style="aspect-ratio: 0.562799 / 1"
+                      >
+                        <div
+                          class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                          style="height: 100%"
+                        >
+                          <img
+                            id="_r_a7_"
+                            loading="lazy"
+                            decoding="async"
+                            width="941"
+                            height="1672"
+                            alt="Generated image"
+                            class="absolute top-0 z-1 w-full"
+                            src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000a35471fd8fec8f46dfcef868&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=322adb0048b354bf01e7fc8f9f3c6d06bad656f02930ee7eff0a63bdcfc70a39&amp;v=0"
+                            style="aspect-ratio: 0.562799 / 1"
+                          />
+                        </div>
+                        <div
+                          class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                          style="aspect-ratio: 0.562799 / 1; filter: blur(0px)"
+                        >
+                          <img
+                            width="941"
+                            height="1672"
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                            class=""
+                            src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000a35471fd8fec8f46dfcef868&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=322adb0048b354bf01e7fc8f9f3c6d06bad656f02930ee7eff0a63bdcfc70a39&amp;v=0"
+                            style="opacity: 1; will-change: opacity; aspect-ratio: 0.562799 / 1"
+                          />
+                        </div>
+                        <div
+                          class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                          style="aspect-ratio: 0.562799 / 1"
+                        >
+                          <img
+                            loading="lazy"
+                            decoding="async"
+                            alt=""
+                            aria-hidden="true"
+                            class="absolute top-0 w-full"
+                            src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000a35471fd8fec8f46dfcef868&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=322adb0048b354bf01e7fc8f9f3c6d06bad656f02930ee7eff0a63bdcfc70a39&amp;v=0"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="relative shrink-0">
+                  <div
+                    class="scrollbar-thin max-h-0 overflow-y-auto pe-1"
+                    style="max-height: 710.734px"
+                  >
+                    <div class="flex flex-col gap-2">
+                      <button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div class="transition-opacity duration-150 opacity-100">
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000a35471fd8fec8f46dfcef868&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=322adb0048b354bf01e7fc8f9f3c6d06bad656f02930ee7eff0a63bdcfc70a39&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000a35471fd8fec8f46dfcef868&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=322adb0048b354bf01e7fc8f9f3c6d06bad656f02930ee7eff0a63bdcfc70a39&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000a35471fd8fec8f46dfcef868&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=322adb0048b354bf01e7fc8f9f3c6d06bad656f02930ee7eff0a63bdcfc70a39&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="border-token-border-default pointer-events-none absolute inset-0 rounded-xl border-2"
+                        ></div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000473471fdb597d90966f732d0&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=134f89baac0f28657bb583162409042172ea7463840f6c9c066df0e7caf5397a&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000473471fdb597d90966f732d0&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=134f89baac0f28657bb583162409042172ea7463840f6c9c066df0e7caf5397a&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000473471fdb597d90966f732d0&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=134f89baac0f28657bb583162409042172ea7463840f6c9c066df0e7caf5397a&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000afc071fd8c5a83710089f33e&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=e287ee8cc1044f7b1bdc38f0b1d29e83bcd77eababf4d2e2a1bd50ef8e222098&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000afc071fd8c5a83710089f33e&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=e287ee8cc1044f7b1bdc38f0b1d29e83bcd77eababf4d2e2a1bd50ef8e222098&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000afc071fd8c5a83710089f33e&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=e287ee8cc1044f7b1bdc38f0b1d29e83bcd77eababf4d2e2a1bd50ef8e222098&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000322871fd924c059c92222314&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=841985b23394a0fc4416f8c9ecc791c83753440eb70a46c08e35958953ad934c&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000322871fd924c059c92222314&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=841985b23394a0fc4416f8c9ecc791c83753440eb70a46c08e35958953ad934c&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000322871fd924c059c92222314&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=841985b23394a0fc4416f8c9ecc791c83753440eb70a46c08e35958953ad934c&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_0000000035e471fda040de1d96b050c2&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=823c4c4b05c7c6e404ea2f8cad5ae3b006033845890df5c01029e49010ba7bab&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_0000000035e471fda040de1d96b050c2&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=823c4c4b05c7c6e404ea2f8cad5ae3b006033845890df5c01029e49010ba7bab&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_0000000035e471fda040de1d96b050c2&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=823c4c4b05c7c6e404ea2f8cad5ae3b006033845890df5c01029e49010ba7bab&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000352871f89c0acaecbc53aba3&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=83364de19f28414be01ef9d7d038b1a971ce183ebd60a2fc73a84c99f06a34f0&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000352871f89c0acaecbc53aba3&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=83364de19f28414be01ef9d7d038b1a971ce183ebd60a2fc73a84c99f06a34f0&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000352871f89c0acaecbc53aba3&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=83364de19f28414be01ef9d7d038b1a971ce183ebd60a2fc73a84c99f06a34f0&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000f85071f88af5946a89d29a22&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=765ecec7f3054b142005edeeed86b4aee27846fd5b541ffbb55a4a4e621edb2a&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000f85071f88af5946a89d29a22&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=765ecec7f3054b142005edeeed86b4aee27846fd5b541ffbb55a4a4e621edb2a&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000f85071f88af5946a89d29a22&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=765ecec7f3054b142005edeeed86b4aee27846fd5b541ffbb55a4a4e621edb2a&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_000000005fe071f88569a1d0e18466ef&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=f51c9373cd58e3b90dfbe0385252d7cb5df3c0e1b651d6d20fecb1e487b3b1ee&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_000000005fe071f88569a1d0e18466ef&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=f51c9373cd58e3b90dfbe0385252d7cb5df3c0e1b651d6d20fecb1e487b3b1ee&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_000000005fe071f88569a1d0e18466ef&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=f51c9373cd58e3b90dfbe0385252d7cb5df3c0e1b651d6d20fecb1e487b3b1ee&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000296c71fd87a98323f70994d6&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=cd88ce6d290ba2e41956a3b539bf4354e77cdce4e57cdd4a0d048b550d8f75aa&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000296c71fd87a98323f70994d6&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=cd88ce6d290ba2e41956a3b539bf4354e77cdce4e57cdd4a0d048b550d8f75aa&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000296c71fd87a98323f70994d6&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=cd88ce6d290ba2e41956a3b539bf4354e77cdce4e57cdd4a0d048b550d8f75aa&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div></button
+                      ><button type="button" class="group relative w-14 rounded-lg p-1">
+                        <div
+                          class="transition-opacity duration-150 opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        >
+                          <div
+                            class="group/imagegen-image relative w-full overflow-hidden max-w-[25rem] rounded-lg"
+                            id="image-52cff575-2da6-4aac-8567-31be6a143ddc"
+                            style="aspect-ratio: 1 / 1"
+                          >
+                            <div
+                              class="relative z-0 h-full w-full rounded-[inherit] after:pointer-events-none after:absolute after:inset-0 after:z-3 after:rounded-[inherit] after:opacity-0 after:[outline:2px_auto_-webkit-focus-ring-color] after:[outline-offset:-2px] after:transition-opacity after:content-[''] focus-visible:outline-none focus-visible:after:opacity-100"
+                            >
+                              <div
+                                class="relative z-0 cursor-pointer overflow-hidden rounded-[inherit] max-w-[25rem]"
+                                style="aspect-ratio: 1 / 1"
+                              >
+                                <div
+                                  class="absolute start-0 end-0 top-0 z-2 w-full overflow-hidden rounded-[inherit] transition-[mask] ease-linear"
+                                  style="height: 100%"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    class="absolute inset-0 z-1 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000268871fda7c8a73c34d23be3&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=b19a6fb21f1e76dd620098274ebae5f83488f537846c513c331abd35f9e4017a&amp;v=0"
+                                    style="aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="relative z-1 w-full overflow-hidden rounded-[inherit]"
+                                  style="aspect-ratio: 1 / 1; filter: blur(0px)"
+                                >
+                                  <img
+                                    width="941"
+                                    height="1672"
+                                    alt="Generated image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000268871fda7c8a73c34d23be3&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=b19a6fb21f1e76dd620098274ebae5f83488f537846c513c331abd35f9e4017a&amp;v=0"
+                                    style="opacity: 1; will-change: opacity; aspect-ratio: 1 / 1"
+                                  />
+                                </div>
+                                <div
+                                  class="absolute inset-0 z-0 scale-110 overflow-hidden rounded-[inherit] blur-2xl"
+                                  style="aspect-ratio: 1 / 1"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Generated image"
+                                    class="absolute inset-0 h-full w-full object-cover"
+                                    src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000268871fda7c8a73c34d23be3&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=b19a6fb21f1e76dd620098274ebae5f83488f537846c513c331abd35f9e4017a&amp;v=0"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="from-token-bg-primary pointer-events-none absolute inset-x-0 top-0 h-7 bg-gradient-to-b to-transparent transition-opacity duration-200 ease-out opacity-0"
+                  ></div>
+                  <div
+                    class="from-token-bg-primary pointer-events-none absolute inset-x-0 bottom-0 h-7 bg-gradient-to-t to-transparent transition-opacity duration-200 ease-out opacity-0"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="z-0 flex min-h-[46px] justify-start">
+          <div
+            aria-label="Response actions"
+            class="touch:-me-2 touch:-ms-3.5 -ms-2.5 -me-1 flex flex-wrap items-center gap-y-4 p-1 select-none touch:w-[calc(100%+--spacing(3.5))] -mt-1 w-[calc(100%+--spacing(2.5))] duration-[1.5s] focus-within:transition-none hover:transition-none touch:pointer-events-auto pointer-events-none [mask-image:linear-gradient(to_right,black_33%,transparent_66%)] [mask-size:300%_100%] [mask-position:100%_0%] motion-safe:transition-[mask-position] group-hover/turn-messages:pointer-events-auto group-hover/turn-messages:[mask-position:0_0] group-focus-within/turn-messages:pointer-events-auto group-focus-within/turn-messages:[mask-position:0_0] has-data-[state=open]:pointer-events-auto has-data-[state=open]:[mask-position:0_0]"
+            role="group"
+            tabindex="-1"
+            style="mask-position: 0% 0%"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <span class="sr-only"><br /></span>
+  </section>
+</div>
+
+# img link:
+<img
+  id="_r_a7_"
+  loading="lazy"
+  decoding="async"
+  width="941"
+  height="1672"
+  alt="Generated image"
+  class="absolute top-0 z-1 w-full"
+  src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000a35471fd8fec8f46dfcef868&amp;ts=494242&amp;p=fs&amp;cid=1&amp;sig=322adb0048b354bf01e7fc8f9f3c6d06bad656f02930ee7eff0a63bdcfc70a39&amp;v=0"
+  style="aspect-ratio: 0.562799 / 1"
+/>
+
+# Model selector:
+<button
+  type="button"
+  class="__composer-pill __composer-pill--neutral group/pill"
+  data-tone="neutral"
+  id="radix-_r_16_"
+  aria-haspopup="menu"
+  aria-expanded="false"
+  data-state="closed"
+>
+  <span class="max-w-40 truncate [[data-collapse-labels]_&amp;]:sr-only">Extended</span
+  ><svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    aria-hidden="true"
+    class="icon-sm -me-0.5 h-3.5 w-3.5 text-token-text-tertiary"
+    inert=""
+  >
+    <use href="/cdn/assets/sprites-core-bc53276c.svg#ba3792" fill="currentColor"></use>
+  </svg>
+</button>
+
+# Available models list:
+<div
+  data-radix-popper-content-wrapper=""
+  dir="ltr"
+  style="
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    transform: translate(997px, 410px);
+    min-width: max-content;
+    --radix-popper-transform-origin: 100% 0px;
+    z-index: 50;
+    --radix-popper-available-width: 1185px;
+    --radix-popper-available-height: 441.640625px;
+    --radix-popper-anchor-width: 103.3125px;
+    --radix-popper-anchor-height: 36px;
+  "
+>
+  <div
+    data-side="bottom"
+    data-align="end"
+    role="menu"
+    aria-orientation="vertical"
+    data-state="open"
+    data-radix-menu-content=""
+    dir="ltr"
+    id="radix-_r_17_"
+    aria-labelledby="radix-_r_16_"
+    class="z-50 max-w-xs rounded-2xl popover bg-token-main-surface-primary dark:bg-[#353535] shadow-long py-1.5 data-[unbound-width]:min-w-[unset] data-[custom-padding]:py-0 MA-gxq_content [--trigger-width:calc(var(--radix-dropdown-menu-trigger-width)-2*var(--radix-align-offset))] min-w-(--trigger-width) max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto select-none"
+    tabindex="-1"
+    data-orientation="vertical"
+    style="
+      outline: none;
+      --radix-dropdown-menu-content-transform-origin: var(--radix-popper-transform-origin);
+      --radix-dropdown-menu-content-available-width: var(--radix-popper-available-width);
+      --radix-dropdown-menu-content-available-height: var(--radix-popper-available-height);
+      --radix-dropdown-menu-trigger-width: var(--radix-popper-anchor-width);
+      --radix-dropdown-menu-trigger-height: var(--radix-popper-anchor-height);
+    "
+  >
+    <div class="__menu-label mb-0">Latest • 5.5</div>
+    <div class="relative">
+      <div
+        role="menuitemradio"
+        tabindex="0"
+        class="group __menu-item hover:bg-(--menu-item-highlighted)! focus:bg-(--menu-item-highlighted)! data-highlighted:bg-(--menu-item-highlighted)! data-[state=active]:bg-(--menu-item-highlighted)!"
+        aria-checked="false"
+        data-testid="model-switcher-gpt-5-5"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <span class="flex min-w-0 items-center gap-1">Instant</span>
+      </div>
+    </div>
+    <div
+      class="group/model-picker-thinking-effort-row relative"
+      data-model-picker-thinking-effort-row="true"
+    >
+      <div
+        role="menuitemradio"
+        tabindex="0"
+        class="group __menu-item group/model-picker-thinking-effort-menu-item pe-12! hover:bg-(--menu-item-highlighted)! focus:bg-(--menu-item-highlighted)! data-highlighted:bg-(--menu-item-highlighted)! data-[state=active]:bg-(--menu-item-highlighted)! group-hover/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)! group-focus-within/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)! group-data-[effort-menu-open]/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)! group-has-[[data-model-picker-thinking-effort-action]:hover]/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)! group-has-[[data-model-picker-thinking-effort-action]:focus-visible]/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)!"
+        aria-checked="true"
+        data-model-picker-thinking-effort-menu-item="true"
+        data-testid="model-switcher-gpt-5-5-thinking"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <span class="flex min-w-0 items-center gap-1"
+          >Thinking<span
+            class="text-token-text-tertiary items-center inline-flex"
+            data-model-picker-thinking-effort-label-extra="true"
+            >• Extended</span
+          ></span
+        >
+      </div>
+      <div
+        class="pointer-events-none absolute inset-y-0 end-1.5 z-1 flex items-center group-hover/model-picker-thinking-effort-row:pointer-events-auto group-data-[effort-menu-open]/model-picker-thinking-effort-row:pointer-events-auto group-has-[[data-model-picker-thinking-effort-menu-item][data-highlighted]]/model-picker-thinking-effort-row:pointer-events-auto group-has-[[data-model-picker-thinking-effort-menu-item]:focus-visible]/model-picker-thinking-effort-row:pointer-events-auto group-has-[[data-model-picker-thinking-effort-menu-item][data-state=active]]/model-picker-thinking-effort-row:pointer-events-auto group-has-[[data-model-picker-thinking-effort-action]:focus-visible]/model-picker-thinking-effort-row:pointer-events-auto"
+        data-model-picker-thinking-effort-action-wrap="true"
+      >
+        <span class="" data-state="closed"
+          ><button
+            tabindex="-1"
+            data-trailing-button=""
+            class="__menu-item-trailing-btn text-token-text-tertiary invisible m-0 h-9 min-h-0 self-auto rounded-lg px-1.5 py-0 group-hover/model-picker-thinking-effort-row:visible group-data-[effort-menu-open]/model-picker-thinking-effort-row:visible group-has-[[data-model-picker-thinking-effort-menu-item][data-highlighted]]/model-picker-thinking-effort-row:visible group-has-[[data-model-picker-thinking-effort-menu-item]:focus-visible]/model-picker-thinking-effort-row:visible group-has-[[data-model-picker-thinking-effort-menu-item][data-state=active]]/model-picker-thinking-effort-row:visible group-has-[[data-model-picker-thinking-effort-action]:focus-visible]/model-picker-thinking-effort-row:visible hover:text-token-text-primary focus-visible:text-token-text-primary data-[state=open]:text-token-text-primary [&amp;:where(:hover,:focus-visible,[data-state=open])&gt;div]:bg-token-interactive-bg-secondary-hover active:[&amp;&gt;div]:bg-token-interactive-bg-secondary-press [&amp;&gt;div]:size-6.5 [&amp;&gt;div]:rounded-md [&amp;&gt;div]:p-1"
+            aria-label="Effort"
+            data-model-picker-thinking-effort-action="true"
+            data-testid="model-switcher-gpt-5-5-thinking-thinking-effort"
+            role="menuitem"
+            id="radix-_r_tk_"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="radix-_r_tj_"
+            data-state="closed"
+            data-orientation="vertical"
+            data-radix-collection-item=""
+          >
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                aria-hidden="true"
+                class="icon"
+              >
+                <use href="/cdn/assets/sprites-core-bc53276c.svg#715504" fill="currentColor"></use>
+              </svg>
+            </div></button
+        ></span>
+      </div>
+    </div>
+    <div
+      class="group/model-picker-thinking-effort-row relative"
+      data-model-picker-thinking-effort-row="true"
+    >
+      <div
+        role="menuitemradio"
+        tabindex="0"
+        class="group __menu-item group/model-picker-thinking-effort-menu-item pe-12! hover:bg-(--menu-item-highlighted)! focus:bg-(--menu-item-highlighted)! data-highlighted:bg-(--menu-item-highlighted)! data-[state=active]:bg-(--menu-item-highlighted)! group-hover/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)! group-focus-within/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)! group-data-[effort-menu-open]/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)! group-has-[[data-model-picker-thinking-effort-action]:hover]/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)! group-has-[[data-model-picker-thinking-effort-action]:focus-visible]/model-picker-thinking-effort-row:[&amp;:not(:disabled):not([data-disabled])]:bg-(--menu-item-highlighted)!"
+        aria-checked="false"
+        data-model-picker-thinking-effort-menu-item="true"
+        data-testid="model-switcher-gpt-5-5-pro"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <span class="flex min-w-0 items-center gap-1"
+          >Pro<span
+            class="text-token-text-tertiary items-center hidden"
+            data-model-picker-thinking-effort-label-extra="true"
+            >• Standard</span
+          ></span
+        >
+      </div>
+      <div
+        class="pointer-events-none absolute inset-y-0 end-1.5 z-1 flex items-center group-hover/model-picker-thinking-effort-row:pointer-events-auto group-data-[effort-menu-open]/model-picker-thinking-effort-row:pointer-events-auto group-has-[[data-model-picker-thinking-effort-menu-item][data-highlighted]]/model-picker-thinking-effort-row:pointer-events-auto group-has-[[data-model-picker-thinking-effort-menu-item]:focus-visible]/model-picker-thinking-effort-row:pointer-events-auto group-has-[[data-model-picker-thinking-effort-menu-item][data-state=active]]/model-picker-thinking-effort-row:pointer-events-auto group-has-[[data-model-picker-thinking-effort-action]:focus-visible]/model-picker-thinking-effort-row:pointer-events-auto"
+        data-model-picker-thinking-effort-action-wrap="true"
+      >
+        <span class="" data-state="closed"
+          ><button
+            tabindex="-1"
+            data-trailing-button=""
+            class="__menu-item-trailing-btn text-token-text-tertiary invisible m-0 h-9 min-h-0 self-auto rounded-lg px-1.5 py-0 group-hover/model-picker-thinking-effort-row:visible group-data-[effort-menu-open]/model-picker-thinking-effort-row:visible group-has-[[data-model-picker-thinking-effort-menu-item][data-highlighted]]/model-picker-thinking-effort-row:visible group-has-[[data-model-picker-thinking-effort-menu-item]:focus-visible]/model-picker-thinking-effort-row:visible group-has-[[data-model-picker-thinking-effort-menu-item][data-state=active]]/model-picker-thinking-effort-row:visible group-has-[[data-model-picker-thinking-effort-action]:focus-visible]/model-picker-thinking-effort-row:visible hover:text-token-text-primary focus-visible:text-token-text-primary data-[state=open]:text-token-text-primary [&amp;:where(:hover,:focus-visible,[data-state=open])&gt;div]:bg-token-interactive-bg-secondary-hover active:[&amp;&gt;div]:bg-token-interactive-bg-secondary-press [&amp;&gt;div]:size-6.5 [&amp;&gt;div]:rounded-md [&amp;&gt;div]:p-1"
+            aria-label="Effort"
+            data-model-picker-thinking-effort-action="true"
+            data-testid="model-switcher-gpt-5-5-pro-thinking-effort"
+            role="menuitem"
+            id="radix-_r_tp_"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="radix-_r_to_"
+            data-state="closed"
+            data-orientation="vertical"
+            data-radix-collection-item=""
+          >
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                aria-hidden="true"
+                class="icon"
+              >
+                <use href="/cdn/assets/sprites-core-bc53276c.svg#715504" fill="currentColor"></use>
+              </svg>
+            </div></button
+        ></span>
+      </div>
+    </div>
+    <div
+      role="separator"
+      aria-orientation="horizontal"
+      class="bg-token-border-default h-px mx-4 my-1"
+    ></div>
+    <div
+      role="menuitem"
+      tabindex="0"
+      class="group __menu-item"
+      data-testid="model-configure-modal"
+      data-orientation="vertical"
+      data-radix-collection-item=""
+    >
+      <div class="flex min-w-0 grow items-center gap-2.5">
+        <div class="truncate">Configure...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Thinking effort selector:
+<div
+  data-radix-popper-content-wrapper=""
+  dir="ltr"
+  style="
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    transform: translate(1187px, 494px);
+    min-width: max-content;
+    --radix-popper-transform-origin: 0px 0%;
+    z-index: 50;
+    --radix-popper-available-width: 265.0781250000001px;
+    --radix-popper-available-height: 358px;
+    --radix-popper-anchor-width: 38px;
+    --radix-popper-anchor-height: 36px;
+    will-change: transform;
+  "
+>
+  <div
+    data-side="right"
+    data-align="start"
+    role="menu"
+    aria-orientation="vertical"
+    data-state="open"
+    data-radix-menu-content=""
+    dir="ltr"
+    id="radix-_r_tj_"
+    aria-labelledby="radix-_r_tk_"
+    class="z-50 max-w-xs rounded-2xl popover bg-token-main-surface-primary dark:bg-[#353535] shadow-long py-1.5 select-none data-[unbound-width]:min-w-[unset] data-[custom-padding]:py-0 mt-2 max-h-[calc(100vh-300px)] min-w-[100px] overflow-auto"
+    tabindex="-1"
+    data-orientation="vertical"
+    style="
+      outline: none;
+      --radix-dropdown-menu-content-transform-origin: var(--radix-popper-transform-origin);
+      --radix-dropdown-menu-content-available-width: var(--radix-popper-available-width);
+      --radix-dropdown-menu-content-available-height: var(--radix-popper-available-height);
+      --radix-dropdown-menu-trigger-width: var(--radix-popper-anchor-width);
+      --radix-dropdown-menu-trigger-height: var(--radix-popper-anchor-height);
+    "
+  >
+    <div role="group">
+      <div
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="0"
+        class="group __menu-item"
+        data-state="unchecked"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <div class="flex min-w-0 grow items-center gap-2.5"><div class="truncate">Light</div></div>
+        <div class="trailing" data-trailing-style="radio-check">
+          <div class="icon-sm group-radix-state-checked:hidden"></div>
+        </div>
+      </div>
+      <div
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="0"
+        class="group __menu-item"
+        data-state="unchecked"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <div class="flex min-w-0 grow items-center gap-2.5">
+          <div class="truncate">Standard</div>
+        </div>
+        <div class="trailing" data-trailing-style="radio-check">
+          <div class="icon-sm group-radix-state-checked:hidden"></div>
+        </div>
+      </div>
+      <div
+        role="menuitemradio"
+        aria-checked="true"
+        tabindex="0"
+        class="group __menu-item"
+        data-state="checked"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <div class="flex min-w-0 grow items-center gap-2.5">
+          <div class="truncate">Extended</div>
+        </div>
+        <div class="trailing" data-trailing-style="radio-check">
+          <span data-state="checked"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              aria-hidden="true"
+              class="icon-sm"
+            >
+              <use
+                href="/cdn/assets/sprites-core-bc53276c.svg#249d41"
+                fill="currentColor"
+              ></use></svg
+          ></span>
+          <div class="icon-sm group-radix-state-checked:hidden"></div>
+        </div>
+      </div>
+      <div
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="0"
+        class="group __menu-item"
+        data-state="unchecked"
+        data-orientation="vertical"
+        data-radix-collection-item=""
+      >
+        <div class="flex min-w-0 grow items-center gap-2.5"><div class="truncate">Heavy</div></div>
+        <div class="trailing" data-trailing-style="radio-check">
+          <div class="icon-sm group-radix-state-checked:hidden"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
